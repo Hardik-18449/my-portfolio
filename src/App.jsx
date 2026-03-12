@@ -7,7 +7,7 @@ import Portfolio from './Components/Portfolio';
 import Skills from './Components/Skills';
 import Experience from './Components/Work';
 import Navbar from './Components/Navbar';
-import Contact from './Components/COntact';
+import Contact from './Components/Contact';
 
 import themeSong from './assets/ThemeMusic.mp3'; 
 import WelcomeScreen from './Components/Welcome';
