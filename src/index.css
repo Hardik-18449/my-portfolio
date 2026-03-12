@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anton", sans-serif;
+  --font-signature: "Great Vibes", cursive;
+  
+  /* Spider-Man Iconic Red */
+  --color-accent: #E23636; 
+}
+
+:root {
+  --bg-main: #ffffff;
+  --text-main: #000000;
+  /* Light mode mein webs (portfolio text) halki greyish blue */
+  --portfolio-text: rgba(28, 56, 121, 0.08); 
+}
+
+.dark {
+  --bg-main: #050505; /* Ekdum dark black spiderman suit jaisa */
+  --text-main: #ffffff;
+  /* Dark mode mein webs halki red/white mix */
+  --portfolio-text: rgba(226, 54, 54, 0.1); 
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.5s ease;
+  }
+}
+
+
+
+/* index.css */
+
+/* Sabhi elements se cursor hatane ke liye */
+* {
+  cursor: none !important;
+}
+
+/* Links aur buttons par bhi cursor hide karo */
+a, button, [role="button"], input, label, select, .cursor-pointer {
+  cursor: none !important;
+}
+
+/* Taaki text select karte waqt bhi I-beam cursor na aaye */
+::selection {
+  cursor: none !important;
+}
