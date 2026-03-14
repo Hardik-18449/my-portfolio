@@ -48,9 +48,11 @@ const Contact = ({ isDark }) => {
           </div>
 
           <div className="space-y-4 md:space-y-6 flex flex-col items-center lg:items-start">
-            <div className="flex flex-col md:flex-row items-center gap-4 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-accent flex items-center justify-center group-hover:bg-accent transition-all">
-                <span className="text-accent group-hover:text-white font-bold text-sm md:text-base">@</span>
+            {/* Email Contact Item */}
+            <div className="flex flex-col md:flex-row items-center gap-4 group cursor-pointer">
+              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full border border-accent flex items-center justify-center transition-all 
+                group-hover:bg-accent group-active:bg-accent`}>
+                <span className={`text-accent font-bold text-sm md:text-base group-hover:text-white group-active:text-white`}>@</span>
               </div>
               <div className="text-center lg:text-left">
                 <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Email Me</p>
@@ -58,9 +60,11 @@ const Contact = ({ isDark }) => {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row items-center gap-4 group">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-accent flex items-center justify-center group-hover:bg-accent transition-all">
-                <span className="text-accent group-hover:text-white font-bold text-sm md:text-base">#</span>
+            {/* Social Contact Item */}
+            <div className="flex flex-col md:flex-row items-center gap-4 group cursor-pointer">
+              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full border border-accent flex items-center justify-center transition-all 
+                group-hover:bg-accent group-active:bg-accent`}>
+                <span className={`text-accent font-bold text-sm md:text-base group-hover:text-white group-active:text-white`}>#</span>
               </div>
               <div className="text-center lg:text-left">
                 <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Socials</p>
@@ -77,10 +81,9 @@ const Contact = ({ isDark }) => {
           viewport={{ once: true }}
           className={`w-full lg:w-1/2 p-6 md:p-12 border transition-colors duration-500 ${isDark ? "bg-[#1d1836]/80 border-white/10" : "bg-white/80 border-black/10 shadow-2xl"} backdrop-blur-xl rounded-2xl relative overflow-hidden`}
         >
-          {/* Subtle Red Glow */}
           <div className="absolute -top-24 -right-24 w-48 h-48 bg-accent/20 blur-[100px]" />
 
-          <form className="space-y-6 relative z-10">
+          <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
             <div className="space-y-2 text-left">
               <label className="text-[10px] uppercase tracking-widest font-bold text-accent">Your Secret Identity (Name)</label>
               <input 
@@ -122,7 +125,9 @@ const Contact = ({ isDark }) => {
 
             <button 
               type="submit"
-              className="w-full py-4 bg-accent text-white font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] hover:bg-black hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(226,54,54,0.3)] text-xs md:text-base"
+              className="w-full py-4 bg-accent text-white font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] transition-all duration-300 shadow-[0_0_20px_rgba(226,54,54,0.3)] text-xs md:text-base
+                hover:bg-black hover:text-white 
+                active:scale-95 active:bg-black active:text-white"
             >
               Dispatch Message
             </button>
@@ -131,7 +136,6 @@ const Contact = ({ isDark }) => {
 
       </div>
 
-      {/* Footer */}
       <div className="mt-16 md:mt-24 text-center opacity-30 px-4">
         <p className="text-[8px] md:text-[10px] uppercase tracking-[0.3em] md:tracking-[0.5em] font-bold">
           Handcrafted by Hardik Gurjar © 2026 • TASM Multiverse Edition

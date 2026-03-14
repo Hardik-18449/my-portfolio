@@ -6,19 +6,14 @@ import Web from '../assets/web.png';
 
 const About = ({ isDark }) => {
   return (
-   <section 
-  id="about" 
-  className={`
-    relative z-20 w-full min-h-screen px-6 md:px-20 
-    flex flex-col md:flex-row items-center gap-12 bg-transparent 
-    /* MOBILE: Positive margin to create space from Hero */
-    mt-24 
-    /* TABLET: Reduced negative margin */
-    md:-mt-20 
-    /* LAPTOP: Standard TASM overlap */
-    lg:-mt-25
-  `}
->
+    <section 
+      id="about" 
+      className={`
+        relative z-20 w-full min-h-screen px-6 md:px-20 
+        flex flex-col md:flex-row items-center gap-12 bg-transparent 
+        mt-24 md:-mt-20 lg:-mt-25
+      `}
+    >
       
       {/* Left Side: Spider-Sense Text Content */}
       <div className="w-full md:w-1/2 space-y-6">
@@ -39,19 +34,19 @@ const About = ({ isDark }) => {
           <a 
             href="/resume.pdf" 
             download="Hardik_Gurjar_Resume.pdf" 
-            className="px-8 py-3 bg-accent text-white font-bold rounded-sm transform hover:scale-105 transition-all active:scale-95 shadow-[0_0_20px_rgba(226,54,54,0.4)] flex items-center justify-center"
+            className="px-8 py-3 bg-accent text-white font-bold rounded-sm transform hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(226,54,54,0.4)] flex items-center justify-center"
           >
             RESUME
           </a>
 
           {/* CONTACT BUTTON */}
-          <button className={`px-8 py-3 border-2 border-accent font-bold rounded-sm transition-all hover:bg-accent hover:text-white ${isDark ? "text-white" : "text-black"}`}>
+          <button className={`px-8 py-3 border-2 border-accent font-bold rounded-sm transition-all hover:bg-accent hover:text-white active:bg-accent active:text-white ${isDark ? "text-white" : "text-black"}`}>
             GET IN TOUCH
           </button>
         </div>
       </div>
 
-      {/* Right Side: Skill Cards Grid (4 Cards) */}
+      {/* Right Side: Skill Cards Grid */}
       <div className="w-full md:w-1/2 grid grid-cols-2 gap-4">
         {[
           { label: 'Backend', icon: Backend }, 
@@ -61,12 +56,19 @@ const About = ({ isDark }) => {
         ].map((skill, i) => (
           <div 
             key={i} 
-            className={`p-6 md:p-10 border flex flex-col items-center justify-center text-center gap-4 ${
-              isDark ? "border-white/10 bg-white/5" : "border-black/5 bg-black/5"
-            } backdrop-blur-md transition-all duration-300 hover:border-accent/50 group relative overflow-hidden`}
+            className={`p-6 md:p-10 border flex flex-col items-center justify-center text-center gap-4 transition-all duration-300 group relative overflow-hidden
+              ${isDark ? "border-white/10 bg-white/5" : "border-black/5 bg-black/5"}
+              
+              /* Effect on Hover (Desktop) & Active (Mobile) */
+              hover:border-accent/50 active:border-accent/50
+              hover:bg-accent/5 active:bg-accent/5
+              active:scale-95
+            `}
           >
             {/* Skill Icon PNG */}
-            <div className="relative z-10 w-16 h-16 md:w-24 md:h-24 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6">
+            <div className="relative z-10 w-16 h-16 md:w-24 md:h-24 transition-transform duration-500 
+              group-hover:scale-110 group-hover:-rotate-6
+              group-active:scale-110 group-active:-rotate-6">
               <img 
                 src={skill.icon} 
                 alt={skill.label} 
@@ -76,13 +78,17 @@ const About = ({ isDark }) => {
 
             {/* Skill Name */}
             <p className={`relative z-10 uppercase tracking-[0.2em] text-[10px] md:text-xs font-bold transition-colors duration-300 ${
-              isDark ? "text-gray-400 group-hover:text-white" : "text-gray-500 group-hover:text-black"
+              isDark 
+                ? "text-gray-400 group-hover:text-white group-active:text-white" 
+                : "text-gray-500 group-hover:text-black group-active:text-black"
             }`}>
               {skill.label}
             </p>
 
-            {/* Background Hover Glow */}
-            <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/5 transition-colors duration-500" />
+            {/* Background Hover/Active Glow */}
+            <div className={`absolute inset-0 bg-accent/0 transition-colors duration-500 
+              group-hover:bg-accent/5 group-active:bg-accent/5`} 
+            />
           </div>
         ))}
       </div>

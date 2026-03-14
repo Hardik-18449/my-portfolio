@@ -4,8 +4,15 @@ import { loadSlim } from "@tsparticles/slim";
 
 const Background = ({ isDark }) => {
   const [init, setInit] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    // Check if device is mobile to disable sticky hover links
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(pointer: coarse)").matches);
+    };
+    
+    checkMobile();
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
     }).then(() => setInit(true));
@@ -29,8 +36,8 @@ const Background = ({ isDark }) => {
             enable: true,
             color: webColor,
             distance: 220, 
-            opacity: 0, // Shuru mein invisible
-            width: 1, // WIDTH BADHA DI HAI (Yahan se base width control hoti hai)
+            opacity: 0, 
+            width: 1, 
           },
           move: { 
             enable: true, 
@@ -39,16 +46,20 @@ const Background = ({ isDark }) => {
             outModes: { default: "out" } 
           },
           number: { 
-            value: 120, // Thode kam nodes taaki bold lines messy na lagein
+            value: isMobile ? 60 : 120, // Mobile par nodes kam kar diye performance ke liye
             density: { enable: true, width: 1920, height: 1080 } 
           },
-          opacity: { value: 0 }, // Nodes invisible
+          opacity: { value: 0 }, 
           shape: { type: "circle" },
           size: { value: 0 }, 
         },
         interactivity: {
           events: { 
-            onHover: { enable: true, mode: "grab" },
+            // On Mobile, we disable grab mode to prevent sticky lines
+            onHover: { 
+              enable: !isMobile, 
+              mode: "grab" 
+            },
             onClick: { enable: true, mode: "push" } 
           },
           modes: { 
@@ -57,7 +68,6 @@ const Background = ({ isDark }) => {
               links: { 
                 opacity: isDark ? 0.8 : 0.5, 
                 color: webColor,
-             
                 width: 3 
               } 
             },

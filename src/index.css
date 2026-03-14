@@ -3,48 +3,88 @@
 @theme {
   --font-display: "Anton", sans-serif;
   --font-signature: "Great Vibes", cursive;
-  
-  /* Spider-Man Iconic Red */
-  --color-accent: #E23636; 
-}
+  --color-accent: #E23636;
 
-:root {
-  --bg-main: #ffffff;
-  --text-main: #000000;
-  /* Light mode mein webs (portfolio text) halki greyish blue */
-  --portfolio-text: rgba(28, 56, 121, 0.08); 
-}
-
-.dark {
-  --bg-main: #050505; /* Ekdum dark black spiderman suit jaisa */
-  --text-main: #ffffff;
-  /* Dark mode mein webs halki red/white mix */
-  --portfolio-text: rgba(226, 54, 54, 0.1); 
+  /* Keyframes ko @theme se bahar base CSS mein rakhna zyada stable hai v4 ke liye */
 }
 
 @layer base {
+  :root {
+    --bg-main: #ffffff;
+    --text-main: #000000;
+  }
+
+  .dark {
+    --bg-main: #050505;
+    --text-main: #ffffff;
+  }
+
   body {
     background-color: var(--bg-main);
     color: var(--text-main);
     transition: background-color 0.5s ease;
+    cursor: none !important;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+    cursor: none !important;
   }
 }
 
+@layer utilities {
+  .glitch-wrapper {
+    position: relative;
+    display: inline-block;
+  }
 
+  .glitch-layer {
+    text-transform: uppercase;
+    font-weight: bolder;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-/* index.css */
+  /* Durations badha di hain (2s -> 4s, etc.) */
+  .glitch-red {
+    color: #ff0000;
+    animation: spidey-shatter-1 4s infinite ease-in-out;
+    z-index: -1;
+  }
 
-/* Sabhi elements se cursor hatane ke liye */
-* {
-  cursor: none !important;
-}
+  .glitch-cyan {
+    color: #00ffff;
+    animation: spidey-shatter-2 3.5s infinite ease-in-out;
+    z-index: -2;
+  }
 
-/* Links aur buttons par bhi cursor hide karo */
-a, button, [role="button"], input, label, select, .cursor-pointer {
-  cursor: none !important;
-}
+  .glitch-main {
+    color: #fff;
+    position: relative;
+    animation: spidey-shatter-3 3s infinite ease-in-out;
+  }
 
-/* Taaki text select karte waqt bhi I-beam cursor na aaye */
-::selection {
-  cursor: none !important;
+  /* Keyframes modified with more "Static" time (pauses) */
+  @keyframes spidey-shatter-1 {
+    0%, 40%, 100% { transform: translate(0, 0); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    5% { transform: translate(5px, 0); clip-path: polygon(10% 10%, 90% 10%, 90% 90%, 10% 90%); }
+    10% { transform: translate(-5px, 2px); clip-path: polygon(0% 50%, 100% 50%, 100% 60%, 0% 60%); }
+    15% { transform: translate(0, 0); clip-path: polygon(19% 74%, 75% 84%, 75% 100%, 0% 100%); }
+  }
+
+  @keyframes spidey-shatter-2 {
+    0%, 50%, 100% { transform: translate(0, 0); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    8% { transform: translate(-8px, 0); clip-path: polygon(0% 15%, 100% 15%, 100% 25%, 0% 25%); }
+    12% { transform: translate(8px, -2px); clip-path: polygon(22% 0%, 0% 84%, 0% 50%, 0% 0%); }
+    20% { transform: translate(0, 0); }
+  }
+
+  @keyframes spidey-shatter-3 {
+    0%, 30%, 100% { transform: translate(0, 0); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+    5% { transform: translate(2px, 2px); clip-path: polygon(11% 23%, 22% 50%, 10% 30%, 10% 3%); }
+    15% { transform: translate(-2px, -2px); clip-path: polygon(0 0, 100% 0, 100% 10%, 0 10%); }
+  }
 }
