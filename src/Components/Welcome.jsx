@@ -5,7 +5,7 @@ import { loadSlim } from "@tsparticles/slim";
 import HangSpider from '../assets/Hangspider.svg';
 import SpidyBgDesktop from '../assets/Spidy2.png'; // Landscape (Desktop)
 import SpidyBgMobile from '../assets/SpiderMobile.png'; // Portrait (Mobile)
-import PortalVid from '../assets/portal.mp4'; 
+import PortalVid from '../assets/Portal.mp4'; 
 
 const WelcomeScreen = ({ onComplete, audioRef }) => {
   const [isAnimating, setIsAnimating] = useState(false);
