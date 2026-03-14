@@ -4,7 +4,7 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import HangSpider from '../assets/Hangspider.svg';
 import SpidyBgDesktop from '../assets/Spidy2.png'; // Landscape (Desktop)
-import SpidyBgMobile from '../assets/spidermobile.png'; // Portrait (Mobile)
+import SpidyBgMobile from '../assets/SpiderMobile.png'; // Portrait (Mobile)
 import PortalVid from '../assets/portal.mp4'; 
 
 const WelcomeScreen = ({ onComplete, audioRef }) => {
